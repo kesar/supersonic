@@ -32,11 +32,12 @@ observer = new MutationObserver (mutations) ->
   for mutation in mutations
     # If content changed
     if mutation.type is "childList"
+      window.supersonic.logger.debug "super-navbar-button MutationObserver childList"
       mutation.target._setButtonTitle()
       mutation.target.updateOnNavbar()
     # If attribute changed
     if mutation.type is "attributes"
-      console.log "mutation", mutation
+      window.supersonic.logger.debug "super-navbar-button MutationObserver mutation", mutation
       # Side
       if mutation.attributeName is "side"
         mutation.target._side = mutation.target.getAttribute("side")

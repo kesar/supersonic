@@ -99,6 +99,7 @@ SuperNavbarPrototype.updateNavBarTitle = ->
 # Methods for navbar buttons
 
 SuperNavbarPrototype.addButton = (button, side="left") ->
+  window.supersonic.logger.debug "super-navbar addButton", button, side
   # Figure out the side where to add button
   if side is "right" then this._rightButtons.push button
   else this._leftButtons.push button
@@ -106,6 +107,7 @@ SuperNavbarPrototype.addButton = (button, side="left") ->
   this.onButtonsChanged()
 
 SuperNavbarPrototype.updateButton = (button) ->
+  window.supersonic.logger.debug "super-navbar updateButton", button
   # First check the left side for the button reference
   for candidate, idx in this._leftButtons when candidate is button
     this._leftButtons[idx] = button
@@ -142,6 +144,8 @@ SuperNavbarPrototype.setButtons = (buttons) ->
   this.onButtonsChanged()
 
 SuperNavbarPrototype._updateButtons = ->
+  window.supersonic.logger.debug "super-navbar _updateButtons", this._leftButtons, this._rightButtons
+
   # Set base for options
   options =
     buttons:
